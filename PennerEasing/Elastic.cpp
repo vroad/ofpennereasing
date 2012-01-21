@@ -6,7 +6,7 @@ float Elastic::easeIn (float t,float b , float c, float d) {
 	float a=c; 
 	float s=p/4;
 	float postFix =a*pow(2,10*(t-=1)); // this is a fix, again, with post-increment operators
-	return -(postFix * sin((t*d-s)*(2*PI)/p )) + b;
+	return -(postFix * sin((t*d-s)*(2.f*(float)PI)/p )) + b;
 }
 
 float Elastic::easeOut(float t,float b , float c, float d) {
@@ -14,7 +14,7 @@ float Elastic::easeOut(float t,float b , float c, float d) {
 	float p=d*.3f;
 	float a=c; 
 	float s=p/4;
-	return (a*pow(2,-10*t) * sin( (t*d-s)*(2*PI)/p ) + c + b);	
+	return (a*pow(2,-10*t) * sin( (t*d-s)*(2*(float)PI)/p ) + c + b);	
 }
 
 float Elastic::easeInOut(float t,float b , float c, float d) {
@@ -25,8 +25,8 @@ float Elastic::easeInOut(float t,float b , float c, float d) {
 	 
 	if (t < 1) {
 		float postFix =a*pow(2,10*(t-=1)); // postIncrement is evil
-		return -.5f*(postFix* sin( (t*d-s)*(2*PI)/p )) + b;
+		return -.5f*(postFix* sin( (t*d-s)*(2*(float)PI)/p )) + b;
 	} 
 	float postFix =  a*pow(2,-10*(t-=1)); // postIncrement is evil
-	return postFix * sin( (t*d-s)*(2*PI)/p )*.5f + c + b;
+	return postFix * sin( (t*d-s)*(2*(float)PI)/p )*.5f + c + b;
 }
